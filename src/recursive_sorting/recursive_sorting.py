@@ -56,6 +56,9 @@ def merge2(listA, listB):
     return merged_arr
 
 
+"""
+Print Tests
+
 print(merge([1, 10, 50], [2, 14, 99, 100]))
 # merged arr [1, 10, 50, 2, 14, 99, 100]
 print(merge([100], [1, 3, 4, 5]))
@@ -64,14 +67,36 @@ print(merge([100], [1, 3, 4, 5]))
 print(merge([], [1, 3]))
 # (2) [1, 3] - works bc first loop does not run
 
+print(merge([1, 2, 3], [2, 3, 4]))
+
+"""
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
+'''
+Objective: Break up array into halfs until you have arrays that are empty or have one element
+- Find the mid by dividing length by 2 and floorig ing it
+- Array of 0 or 1 elements are sorted
+- Use array.slice to break up array
+Base Case: If the length of the arr is <=1, then it is sorted
+
+'''
 
 
-# def merge_sort(arr):
-#     # TO-DO
+def merge_sort(arr):
+    # TO-DO
+    # What's our base case? If the length of the arr is <=1
+    if len(arr) <= 1:
+        return arr
 
-#     return arr
+    mid = len(arr) // 2
+    # call merge sort recursively on two halfs of array
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    # Merge the left and right
+    return merge(left, right)
+
+
+print(merge_sort([10, 24, 76, 73, 72, 1, 9]))
 
 
 # STRETCH: implement an in-place merge sort algorithm
